@@ -23,10 +23,22 @@ df = df.drop(full_empty_columns
              + partially_empty_columns
              + useless_data, axis=1)
 df = df.fillna(0)
-print(df)
 df.to_excel(r'data\DF.xlsx')
-df = xlsx_parse.df_create('data/DF.xlsx', 0)
+df['GDP per Capita'] = df['GDP (current US$)']/df['Population, total']
+
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
+df.iloc[:, 1:]
+df.iloc[:, 1:].dtypes
 df.iloc[:, 1:].describe()
+
+df.plot.bar(x='Country Name',
+            y='Birth rate, crude (per 1,000 people)',
+            rot=0)
+
+df.plot.bar(x='Country Name',
+            y='Urban population growth (annual %)',
+            rot=0)
 
 df.plot.bar(x='Country Name',
             y=[
@@ -60,7 +72,7 @@ df.plot.bar(x='Country Name',
                 'Rural population (% of total population)',
                 'Urban population (% of total population)',
                 ],
-            colors=['r', 'b'],
+            color=['r', 'b'],
             rot=0)
 
 df.boxplot('Mobile cellular subscriptions (per 100 people)')
@@ -82,20 +94,3 @@ corr = df[[
     'Services, value added (% of GDP)'
     ]].corr()
 corr.style.background_gradient(cmap='coolwarm')
-
-#
-# plt.hist(df.iloc[:-2])
-# df.iloc[:-2].hist(column='Population, total')
-# df.hist(column='Population ages 0-14 (% of total population)')
-# df.hist(column='Population ages 15-64 (% of total population)')
-# df.hist(column='Population ages 65 and above (% of total population)')
-# np.histogram(df)
-
-# rs = np.random.RandomState(0)
-# df = pd.DataFrame(rs.rand(10, 10))
-# corr = df.corr()
-# corr.style.background_gradient(cmap='coolwarm')
-# df = xlsx_parse.df_create(
-#                           'data/WDIW.xlsx', 0,\
-#                           'Cool Name', 'Bumblebee',
-#                           'Country Name', 'World')
