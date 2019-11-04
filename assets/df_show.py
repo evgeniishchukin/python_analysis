@@ -25,7 +25,7 @@ class DFshow:
         '''Display max rows'''
 
         pd.set_option('display.max_rows', None)
-        print(df)
+        print('\n\n', df)
 
 
 df_show = DFshow()

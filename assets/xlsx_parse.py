@@ -26,7 +26,7 @@ class XLSXparse:
 
         self.directory = os.path.join(self.root_directory, directory)
         xlsx = pd.ExcelFile(self.directory)
-        df = xlsx.parse(xlsx.sheet_names[sheet_number])
+        df = xlsx.parse(xlsx.sheet_names[sheet_number], index_col=None)
         if column_name_1 is not None and cell_data_1 is not None \
                 and column_name_2 is not None and cell_data_2 is not None:
             df = df.loc[(df[column_name_1] == cell_data_1)
