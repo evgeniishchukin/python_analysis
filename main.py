@@ -28,18 +28,21 @@ df['GDP per Capita'] = df['GDP (current US$)']/df['Population, total']
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
+# <codecell>
 df.iloc[:, 1:]
+# <codecell>
 df.iloc[:, 1:].dtypes
+# <codecell>
 df.iloc[:, 1:].describe()
-
+# <codecell>
 df.plot.bar(x='Country Name',
             y='Birth rate, crude (per 1,000 people)',
             rot=0)
-
+# <codecell>
 df.plot.bar(x='Country Name',
             y='Urban population growth (annual %)',
             rot=0)
-
+# <codecell>
 df.plot.bar(x='Country Name',
             y=[
                 'Agriculture, forestry, and fishing, value added (% of GDP)',
@@ -48,7 +51,7 @@ df.plot.bar(x='Country Name',
                 ],
             stacked=True,
             rot=0)
-
+# <codecell>
 df.plot.bar(x='Country Name',
             y=[
                 'Population ages 0-14 (% of total population)',
@@ -57,7 +60,7 @@ df.plot.bar(x='Country Name',
                 ],
             stacked=True,
             rot=0)
-
+# <codecell>
 df.plot.bar(x='Country Name',
             y=[
                 'Employment in agriculture (% of total employment) (modeled ILO estimate)',
@@ -66,7 +69,7 @@ df.plot.bar(x='Country Name',
                 ],
             stacked=True,
             rot=0)
-
+# <codecell>
 df.plot.bar(x='Country Name',
             y=[
                 'Rural population (% of total population)',
@@ -74,20 +77,21 @@ df.plot.bar(x='Country Name',
                 ],
             color=['r', 'b'],
             rot=0)
-
+# <codecell>
 df.boxplot('Mobile cellular subscriptions (per 100 people)')
+# <codecell>
 df.boxplot('Prevalence of HIV, total (% of population ages 15-49)')
-
+# <codecell>
 corr = df.iloc[:, 1:].corr()
 corr.style.background_gradient(cmap='coolwarm')
-
+# <codecell>
 corr = df[[
     'Employment in agriculture (% of total employment) (modeled ILO estimate)',
     'Employment in industry (% of total employment) (modeled ILO estimate)',
     'Employment in services (% of total employment) (modeled ILO estimate)'
     ]].corr()
 corr.style.background_gradient(cmap='coolwarm')
-
+# <codecell>
 corr = df[[
     'Agriculture, forestry, and fishing, value added (% of GDP)',
     'Industry (including construction), value added (% of GDP)',
