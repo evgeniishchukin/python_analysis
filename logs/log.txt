@@ -1,0 +1,504 @@
+[Command: python -u C:\Users\evgen\OneDrive\Projects\python_analysis\main.py]
+Creating data frame from the Excel File
+
+Get list of all sheet list
+#1: Raw
+#2: Raw Pivot
+#3: Assignment
+#4: Assignment Pivot
+
+
+Parse an dataframe with needed sheet names, needed data
+    Country Code  ... Urban population growth (annual %)
+11           AUT  ...                           1.020479
+18           BEL  ...                           0.428117
+52           DNK  ...                           0.774461
+65           FRO  ...                           0.653759
+68           FRA  ...                           0.336590
+73           DEU  ...                           0.421625
+75           GIB  ...                          -0.026681
+77           GRL  ...                           0.259441
+88           ISL  ...                           2.385884
+93           IRL  ...                           1.422847
+94           IMN  ...                           0.592347
+96           ITA  ...                           0.262999
+114          LIE  ...                           0.463092
+116          LUX  ...                           2.725718
+131          MCO  ...                           0.842253
+141          NLD  ...                           1.077686
+157          PRT  ...                           0.635425
+175          SXM  ...                           1.502331
+182          ESP  ...                           0.535799
+184          MAF  ...                                NaN
+188          CHE  ...                           0.962986
+204          GBR  ...                           1.013391
+
+[22 rows x 68 columns]
+
+
+Make a list of all column names, check wich is empty and not
+Country Code                                                                                                  False
+Country Name                                                                                                  False
+Counter                                                                                                       False
+Hult Region                                                                                                   False
+Cool Name                                                                                                     False
+Access to electricity (% of population)                                                                       False
+Access to electricity, rural (% of rural population)                                                          False
+Access to electricity, urban (% of urban population)                                                          False
+Adolescent fertility rate (births per 1,000 women ages 15-19)                                                 False
+Age dependency ratio (% of working-age population)                                                            False
+Age dependency ratio, old (% of working-age population)                                                       False
+Age dependency ratio, young (% of working-age population)                                                     False
+Agriculture, forestry, and fishing, value added (% of GDP)                                                    False
+Armed forces personnel (% of total labor force)                                                               False
+Birth rate, crude (per 1,000 people)                                                                          False
+Births attended by skilled health staff (% of total)                                                           True
+Death rate, crude (per 1,000 people)                                                                          False
+Educational attainment, Doctoral or equivalent, population 25+, total (%) (cumulative)                        False
+Educational attainment, at least Bachelor's or equivalent, population 25+, total (%) (cumulative)             False
+Educational attainment, at least Master's or equivalent, population 25+, total (%) (cumulative)               False
+Educational attainment, at least completed lower secondary, population 25+, total (%) (cumulative)            False
+Educational attainment, at least completed post-secondary, population 25+, total (%) (cumulative)             False
+Educational attainment, at least completed primary, population 25+ years, total (%) (cumulative)               True
+Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)       False
+Educational attainment, at least completed upper secondary, population 25+, total (%) (cumulative)            False
+Employment in agriculture (% of total employment) (modeled ILO estimate)                                      False
+Employment in industry (% of total employment) (modeled ILO estimate)                                         False
+Employment in services (% of total employment) (modeled ILO estimate)                                         False
+Fertility rate, total (births per woman)                                                                      False
+GDP (current US$)                                                                                             False
+GDP growth (annual %)                                                                                         False
+GINI index (World Bank estimate)                                                                               True
+Government expenditure on education, total (% of government expenditure)                                       True
+Income share held by fourth 20%                                                                                True
+Income share held by highest 20%                                                                               True
+Income share held by lowest 20%                                                                                True
+Income share held by second 20%                                                                                True
+Income share held by third 20%                                                                                 True
+Industry (including construction), value added (% of GDP)                                                     False
+Life expectancy at birth, total (years)                                                                       False
+Literacy rate, adult total (% of people ages 15 and above)                                                     True
+Literacy rate, youth total (% of people ages 15-24)                                                            True
+Merchandise trade (% of GDP)                                                                                  False
+Military expenditure (% of GDP)                                                                               False
+Mobile cellular subscriptions (per 100 people)                                                                False
+Number of people pushed below the $3.10 ($ 2011 PPP) poverty line by out-of-pocket health care expenditure    False
+Population ages 0-14 (% of total population)                                                                  False
+Population ages 15-64 (% of total population)                                                                 False
+Population ages 65 and above (% of total population)                                                          False
+Population density (people per sq. km of land area)                                                           False
+Population growth (annual %)                                                                                  False
+Population in the largest city (% of urban population)                                                        False
+Population living in slums (% of urban population)                                                            False
+Population, female                                                                                            False
+Population, male                                                                                              False
+Population, total                                                                                             False
+Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population)                                            True
+Poverty headcount ratio at $3.20 a day (2011 PPP) (% of population)                                            True
+Poverty headcount ratio at national poverty lines (% of population)                                            True
+Prevalence of HIV, total (% of population ages 15-49)                                                         False
+Prevalence of undernourishment (% of population)                                                              False
+Prevalence of underweight, weight for age (% of children under 5)                                              True
+Rural population (% of total population)                                                                      False
+Services, value added (% of GDP)                                                                              False
+Surface area (sq. km)                                                                                         False
+Tax revenue (% of GDP)                                                                                        False
+Urban population (% of total population)                                                                      False
+Urban population growth (annual %)                                                                            False
+dtype: bool
+
+
+Make a list of all column names, check wich is ALL empty and not
+Country Code                                                                                                  False
+Country Name                                                                                                  False
+Counter                                                                                                       False
+Hult Region                                                                                                   False
+Cool Name                                                                                                     False
+Access to electricity (% of population)                                                                       False
+Access to electricity, rural (% of rural population)                                                          False
+Access to electricity, urban (% of urban population)                                                          False
+Adolescent fertility rate (births per 1,000 women ages 15-19)                                                 False
+Age dependency ratio (% of working-age population)                                                            False
+Age dependency ratio, old (% of working-age population)                                                       False
+Age dependency ratio, young (% of working-age population)                                                     False
+Agriculture, forestry, and fishing, value added (% of GDP)                                                    False
+Armed forces personnel (% of total labor force)                                                               False
+Birth rate, crude (per 1,000 people)                                                                          False
+Births attended by skilled health staff (% of total)                                                           True
+Death rate, crude (per 1,000 people)                                                                          False
+Educational attainment, Doctoral or equivalent, population 25+, total (%) (cumulative)                        False
+Educational attainment, at least Bachelor's or equivalent, population 25+, total (%) (cumulative)             False
+Educational attainment, at least Master's or equivalent, population 25+, total (%) (cumulative)               False
+Educational attainment, at least completed lower secondary, population 25+, total (%) (cumulative)            False
+Educational attainment, at least completed post-secondary, population 25+, total (%) (cumulative)             False
+Educational attainment, at least completed primary, population 25+ years, total (%) (cumulative)               True
+Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)       False
+Educational attainment, at least completed upper secondary, population 25+, total (%) (cumulative)            False
+Employment in agriculture (% of total employment) (modeled ILO estimate)                                      False
+Employment in industry (% of total employment) (modeled ILO estimate)                                         False
+Employment in services (% of total employment) (modeled ILO estimate)                                         False
+Fertility rate, total (births per woman)                                                                      False
+GDP (current US$)                                                                                             False
+GDP growth (annual %)                                                                                         False
+GINI index (World Bank estimate)                                                                               True
+Government expenditure on education, total (% of government expenditure)                                       True
+Income share held by fourth 20%                                                                                True
+Income share held by highest 20%                                                                               True
+Income share held by lowest 20%                                                                                True
+Income share held by second 20%                                                                                True
+Income share held by third 20%                                                                                 True
+Industry (including construction), value added (% of GDP)                                                     False
+Life expectancy at birth, total (years)                                                                       False
+Literacy rate, adult total (% of people ages 15 and above)                                                     True
+Literacy rate, youth total (% of people ages 15-24)                                                            True
+Merchandise trade (% of GDP)                                                                                  False
+Military expenditure (% of GDP)                                                                               False
+Mobile cellular subscriptions (per 100 people)                                                                False
+Number of people pushed below the $3.10 ($ 2011 PPP) poverty line by out-of-pocket health care expenditure    False
+Population ages 0-14 (% of total population)                                                                  False
+Population ages 15-64 (% of total population)                                                                 False
+Population ages 65 and above (% of total population)                                                          False
+Population density (people per sq. km of land area)                                                           False
+Population growth (annual %)                                                                                  False
+Population in the largest city (% of urban population)                                                        False
+Population living in slums (% of urban population)                                                            False
+Population, female                                                                                            False
+Population, male                                                                                              False
+Population, total                                                                                             False
+Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population)                                            True
+Poverty headcount ratio at $3.20 a day (2011 PPP) (% of population)                                            True
+Poverty headcount ratio at national poverty lines (% of population)                                            True
+Prevalence of HIV, total (% of population ages 15-49)                                                         False
+Prevalence of undernourishment (% of population)                                                              False
+Prevalence of underweight, weight for age (% of children under 5)                                              True
+Rural population (% of total population)                                                                      False
+Services, value added (% of GDP)                                                                              False
+Surface area (sq. km)                                                                                         False
+Tax revenue (% of GDP)                                                                                        False
+Urban population (% of total population)                                                                      False
+Urban population growth (annual %)                                                                            False
+dtype: bool
+
+
+Make a list of all empty columns and show them
+#1: Births attended by skilled health staff (% of total)
+#2: Educational attainment, at least completed primary, population 25+ years, total (%) (cumulative)
+#3: GINI index (World Bank estimate)
+#4: Government expenditure on education, total (% of government expenditure)
+#5: Income share held by fourth 20%
+#6: Income share held by highest 20%
+#7: Income share held by lowest 20%
+#8: Income share held by second 20%
+#9: Income share held by third 20%
+#10: Literacy rate, adult total (% of people ages 15 and above)
+#11: Literacy rate, youth total (% of people ages 15-24)
+#12: Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population)
+#13: Poverty headcount ratio at $3.20 a day (2011 PPP) (% of population)
+#14: Poverty headcount ratio at national poverty lines (% of population)
+#15: Prevalence of underweight, weight for age (% of children under 5)
+
+
+Make a list of codes of given country codes
+#1: AUT
+#2: BEL
+#3: DNK
+#4: FRO
+#5: FRA
+#6: DEU
+#7: GIB
+#8: GRL
+#9: ISL
+#10: IRL
+#11: IMN
+#12: ITA
+#13: LIE
+#14: LUX
+#15: MCO
+#16: NLD
+#17: PRT
+#18: SXM
+#19: ESP
+#20: MAF
+#21: CHE
+#22: GBR
+
+
+Delete empty columns from new DF
+    Country Code  ... Urban population growth (annual %)
+11           AUT  ...                           1.020479
+18           BEL  ...                           0.428117
+52           DNK  ...                           0.774461
+65           FRO  ...                           0.653759
+68           FRA  ...                           0.336590
+73           DEU  ...                           0.421625
+75           GIB  ...                          -0.026681
+77           GRL  ...                           0.259441
+88           ISL  ...                           2.385884
+93           IRL  ...                           1.422847
+94           IMN  ...                           0.592347
+96           ITA  ...                           0.262999
+114          LIE  ...                           0.463092
+116          LUX  ...                           2.725718
+131          MCO  ...                           0.842253
+141          NLD  ...                           1.077686
+157          PRT  ...                           0.635425
+175          SXM  ...                           1.502331
+182          ESP  ...                           0.535799
+184          MAF  ...                                NaN
+188          CHE  ...                           0.962986
+204          GBR  ...                           1.013391
+
+[22 rows x 53 columns]
+
+
+Make a list of all column names, check wich is ANY empty and not and amount of empty values
+Country Code                                                                                                   0
+Country Name                                                                                                   0
+Counter                                                                                                        0
+Hult Region                                                                                                    0
+Cool Name                                                                                                      0
+Access to electricity (% of population)                                                                        0
+Access to electricity, rural (% of rural population)                                                           0
+Access to electricity, urban (% of urban population)                                                           0
+Adolescent fertility rate (births per 1,000 women ages 15-19)                                                  8
+Age dependency ratio (% of working-age population)                                                             8
+Age dependency ratio, old (% of working-age population)                                                        8
+Age dependency ratio, young (% of working-age population)                                                      8
+Agriculture, forestry, and fishing, value added (% of GDP)                                                     7
+Armed forces personnel (% of total labor force)                                                                9
+Birth rate, crude (per 1,000 people)                                                                           4
+Death rate, crude (per 1,000 people)                                                                           4
+Educational attainment, Doctoral or equivalent, population 25+, total (%) (cumulative)                        21
+Educational attainment, at least Bachelor's or equivalent, population 25+, total (%) (cumulative)             21
+Educational attainment, at least Master's or equivalent, population 25+, total (%) (cumulative)               21
+Educational attainment, at least completed lower secondary, population 25+, total (%) (cumulative)            21
+Educational attainment, at least completed post-secondary, population 25+, total (%) (cumulative)             21
+Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)       21
+Educational attainment, at least completed upper secondary, population 25+, total (%) (cumulative)            21
+Employment in agriculture (% of total employment) (modeled ILO estimate)                                       8
+Employment in industry (% of total employment) (modeled ILO estimate)                                          8
+Employment in services (% of total employment) (modeled ILO estimate)                                          8
+Fertility rate, total (births per woman)                                                                       4
+GDP (current US$)                                                                                              7
+GDP growth (annual %)                                                                                          6
+Industry (including construction), value added (% of GDP)                                                      7
+Life expectancy at birth, total (years)                                                                        5
+Merchandise trade (% of GDP)                                                                                   8
+Military expenditure (% of GDP)                                                                                9
+Mobile cellular subscriptions (per 100 people)                                                                 3
+Number of people pushed below the $3.10 ($ 2011 PPP) poverty line by out-of-pocket health care expenditure     0
+Population ages 0-14 (% of total population)                                                                   8
+Population ages 15-64 (% of total population)                                                                  8
+Population ages 65 and above (% of total population)                                                           8
+Population density (people per sq. km of land area)                                                            0
+Population growth (annual %)                                                                                   0
+Population in the largest city (% of urban population)                                                        10
+Population living in slums (% of urban population)                                                             0
+Population, female                                                                                             8
+Population, male                                                                                               8
+Population, total                                                                                              0
+Prevalence of HIV, total (% of population ages 15-49)                                                         11
+Prevalence of undernourishment (% of population)                                                               8
+Rural population (% of total population)                                                                       4
+Services, value added (% of GDP)                                                                               7
+Surface area (sq. km)                                                                                          0
+Tax revenue (% of GDP)                                                                                         8
+Urban population (% of total population)                                                                       1
+Urban population growth (annual %)                                                                             1
+dtype: int64
+
+
+Make a list of all columns that have 21 empty values
+#1: Educational attainment, Doctoral or equivalent, population 25+, total (%) (cumulative)
+#2: Educational attainment, at least Bachelor's or equivalent, population 25+, total (%) (cumulative)
+#3: Educational attainment, at least Master's or equivalent, population 25+, total (%) (cumulative)
+#4: Educational attainment, at least completed lower secondary, population 25+, total (%) (cumulative)
+#5: Educational attainment, at least completed post-secondary, population 25+, total (%) (cumulative)
+#6: Educational attainment, at least completed short-cycle tertiary, population 25+, total (%) (cumulative)
+#7: Educational attainment, at least completed upper secondary, population 25+, total (%) (cumulative)
+
+
+Delete empty columns and useles columns from new DF
+                  Country Name  ...  Urban population growth (annual %)
+11                     Austria  ...                            1.020479
+18                     Belgium  ...                            0.428117
+52                     Denmark  ...                            0.774461
+65               Faroe Islands  ...                            0.653759
+68                      France  ...                            0.336590
+73                     Germany  ...                            0.421625
+75                   Gibraltar  ...                           -0.026681
+77                   Greenland  ...                            0.259441
+88                     Iceland  ...                            2.385884
+93                     Ireland  ...                            1.422847
+94                 Isle of Man  ...                            0.592347
+96                       Italy  ...                            0.262999
+114              Liechtenstein  ...                            0.463092
+116                 Luxembourg  ...                            2.725718
+131                     Monaco  ...                            0.842253
+141                Netherlands  ...                            1.077686
+157                   Portugal  ...                            0.635425
+175  Sint Maarten (Dutch part)  ...                            1.502331
+182                      Spain  ...                            0.535799
+184   St. Martin (French part)  ...                                 NaN
+188                Switzerland  ...                            0.962986
+204             United Kingdom  ...                            1.013391
+
+[22 rows x 49 columns]
+
+
+Change empty values to 0 in column that have a 21 empty values
+                  Country Name  ...  Urban population growth (annual %)
+11                     Austria  ...                            1.020479
+18                     Belgium  ...                            0.428117
+52                     Denmark  ...                            0.774461
+65               Faroe Islands  ...                            0.653759
+68                      France  ...                            0.336590
+73                     Germany  ...                            0.421625
+75                   Gibraltar  ...                           -0.026681
+77                   Greenland  ...                            0.259441
+88                     Iceland  ...                            2.385884
+93                     Ireland  ...                            1.422847
+94                 Isle of Man  ...                            0.592347
+96                       Italy  ...                            0.262999
+114              Liechtenstein  ...                            0.463092
+116                 Luxembourg  ...                            2.725718
+131                     Monaco  ...                            0.842253
+141                Netherlands  ...                            1.077686
+157                   Portugal  ...                            0.635425
+175  Sint Maarten (Dutch part)  ...                            1.502331
+182                      Spain  ...                            0.535799
+184   St. Martin (French part)  ...                                 NaN
+188                Switzerland  ...                            0.962986
+204             United Kingdom  ...                            1.013391
+
+[22 rows x 49 columns]
+
+
+Fill empty values by 0
+                  Country Name  ...  Urban population growth (annual %)
+11                     Austria  ...                            1.020479
+18                     Belgium  ...                            0.428117
+52                     Denmark  ...                            0.774461
+65               Faroe Islands  ...                            0.653759
+68                      France  ...                            0.336590
+73                     Germany  ...                            0.421625
+75                   Gibraltar  ...                           -0.026681
+77                   Greenland  ...                            0.259441
+88                     Iceland  ...                            2.385884
+93                     Ireland  ...                            1.422847
+94                 Isle of Man  ...                            0.592347
+96                       Italy  ...                            0.262999
+114              Liechtenstein  ...                            0.463092
+116                 Luxembourg  ...                            2.725718
+131                     Monaco  ...                            0.842253
+141                Netherlands  ...                            1.077686
+157                   Portugal  ...                            0.635425
+175  Sint Maarten (Dutch part)  ...                            1.502331
+182                      Spain  ...                            0.535799
+184   St. Martin (French part)  ...                            0.000000
+188                Switzerland  ...                            0.962986
+204             United Kingdom  ...                            1.013391
+
+[22 rows x 49 columns]
+
+
+Describe the data
+       Access to electricity (% of population)  ...  Urban population growth (annual %)
+count                                     22.0  ...                           22.000000
+mean                                     100.0  ...                            0.831389
+std                                        0.0  ...                            0.688625
+min                                      100.0  ...                           -0.026681
+25%                                      100.0  ...                            0.423248
+50%                                      100.0  ...                            0.644592
+75%                                      100.0  ...                            1.018707
+max                                      100.0  ...                            2.725718
+
+[8 rows x 48 columns]
+
+
+Fill empty values by mean
+                  Country Name  ...  Urban population growth (annual %)
+11                     Austria  ...                            1.020479
+18                     Belgium  ...                            0.428117
+52                     Denmark  ...                            0.774461
+65               Faroe Islands  ...                            0.653759
+68                      France  ...                            0.336590
+73                     Germany  ...                            0.421625
+75                   Gibraltar  ...                           -0.026681
+77                   Greenland  ...                            0.259441
+88                     Iceland  ...                            2.385884
+93                     Ireland  ...                            1.422847
+94                 Isle of Man  ...                            0.592347
+96                       Italy  ...                            0.262999
+114              Liechtenstein  ...                            0.463092
+116                 Luxembourg  ...                            2.725718
+131                     Monaco  ...                            0.842253
+141                Netherlands  ...                            1.077686
+157                   Portugal  ...                            0.635425
+175  Sint Maarten (Dutch part)  ...                            1.502331
+182                      Spain  ...                            0.535799
+184   St. Martin (French part)  ...                            0.870979
+188                Switzerland  ...                            0.962986
+204             United Kingdom  ...                            1.013391
+
+[22 rows x 49 columns]
+
+
+Describe the data
+       Access to electricity (% of population)  ...  Urban population growth (annual %)
+count                                     22.0  ...                           22.000000
+mean                                     100.0  ...                            0.870979
+std                                        0.0  ...                            0.663116
+min                                      100.0  ...                           -0.026681
+25%                                      100.0  ...                            0.436861
+50%                                      100.0  ...                            0.714110
+75%                                      100.0  ...                            1.018707
+max                                      100.0  ...                            2.725718
+
+[8 rows x 48 columns]
+
+
+Fill empty values by mean
+                  Country Name  ...  Urban population growth (annual %)
+11                     Austria  ...                            1.020479
+18                     Belgium  ...                            0.428117
+52                     Denmark  ...                            0.774461
+65               Faroe Islands  ...                            0.653759
+68                      France  ...                            0.336590
+73                     Germany  ...                            0.421625
+75                   Gibraltar  ...                           -0.026681
+77                   Greenland  ...                            0.259441
+88                     Iceland  ...                            2.385884
+93                     Ireland  ...                            1.422847
+94                 Isle of Man  ...                            0.592347
+96                       Italy  ...                            0.262999
+114              Liechtenstein  ...                            0.463092
+116                 Luxembourg  ...                            2.725718
+131                     Monaco  ...                            0.842253
+141                Netherlands  ...                            1.077686
+157                   Portugal  ...                            0.635425
+175  Sint Maarten (Dutch part)  ...                            1.502331
+182                      Spain  ...                            0.535799
+184   St. Martin (French part)  ...                            0.653759
+188                Switzerland  ...                            0.962986
+204             United Kingdom  ...                            1.013391
+
+[22 rows x 49 columns]
+
+
+Describe the data
+       Access to electricity (% of population)  ...  Urban population growth (annual %)
+count                                     22.0  ...                           22.000000
+mean                                     100.0  ...                            0.861105
+std                                        0.0  ...                            0.664731
+min                                      100.0  ...                           -0.026681
+25%                                      100.0  ...                            0.436861
+50%                                      100.0  ...                            0.653759
+75%                                      100.0  ...                            1.018707
+max                                      100.0  ...                            2.725718
+
+[8 rows x 48 columns]
+
+
+Saving to Excel
+[Finished in 3.19s]
