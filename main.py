@@ -1,13 +1,17 @@
-import numpy as np
+# import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import datetime
-from assets.wb_request import wb_request as wb_request
-from assets.df_empty import df_empty as df_empty
-from assets.list_show import list_show as list_show
 from assets.xlsx_parse import xlsx_parse as xlsx_parse
-from assets.df_show import df_show as df_show
+from assets.df_empty import df_empty as df_empty
+# from assets.list_show import list_show as list_show
+# from assets.df_show import df_show as df_show
+# from assets.wb_request import wb_request as wb_request
 
+
+# <codecell>
+'''DATA PREPARATION'''
+# <codecell>
 date_range = (datetime.datetime(2017, 1, 1), datetime.datetime(2017, 12, 31))
 useless_data = ['Cool Name', 'Counter', 'Hult Region', 'Country Code']
 
@@ -25,23 +29,56 @@ df = df.drop(full_empty_columns
 df = df.fillna(0)
 df.to_excel(r'data\DF.xlsx')
 df['GDP per Capita'] = df['GDP (current US$)']/df['Population, total']
+df.set_index(df.columns[0])
+df = df.reset_index(drop=True)
 
+# <codecell>
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
+df
+
 # <codecell>
-df.iloc[:, 1:]
+df.dtypes
+
 # <codecell>
-df.iloc[:, 1:].dtypes
+df.describe()
+
 # <codecell>
-df.iloc[:, 1:].describe()
+'''CORRELATIONS'''
+# <codecell>
+corr = df.corr()
+corr.style.background_gradient(cmap='coolwarm')
+
+# <codecell>
+corr = df[[
+    'Employment in agriculture (% of total employment) (modeled ILO estimate)',
+    'Employment in industry (% of total employment) (modeled ILO estimate)',
+    'Employment in services (% of total employment) (modeled ILO estimate)'
+    ]].corr()
+corr.style.background_gradient(cmap='coolwarm')
+
+# <codecell>
+corr = df[[
+    'Agriculture, forestry, and fishing, value added (% of GDP)',
+    'Industry (including construction), value added (% of GDP)',
+    'Services, value added (% of GDP)'
+    ]].corr()
+corr.style.background_gradient(cmap='coolwarm')
+
+# <codecell>
+'''BAR PLOTS AND HISTOGRAMS'''
 # <codecell>
 df.plot.bar(x='Country Name',
             y='Birth rate, crude (per 1,000 people)',
-            rot=0)
+            rot=0,
+            figsize=(15, 10))
+
 # <codecell>
 df.plot.bar(x='Country Name',
             y='Urban population growth (annual %)',
-            rot=0)
+            rot=0,
+            figsize=(15, 10))
+
 # <codecell>
 df.plot.bar(x='Country Name',
             y=[
@@ -50,7 +87,9 @@ df.plot.bar(x='Country Name',
                 'Services, value added (% of GDP)'
                 ],
             stacked=True,
-            rot=0)
+            rot=0,
+            figsize=(15, 10))
+
 # <codecell>
 df.plot.bar(x='Country Name',
             y=[
@@ -59,16 +98,21 @@ df.plot.bar(x='Country Name',
                 'Population ages 65 and above (% of total population)'
                 ],
             stacked=True,
-            rot=0)
+            rot=0,
+            figsize=(15, 10))
+
 # <codecell>
+y = [
+    'Employment in agriculture (% of total employment) (modeled ILO estimate)',
+    'Employment in industry (% of total employment) (modeled ILO estimate)',
+    'Employment in services (% of total employment) (modeled ILO estimate)'
+]
 df.plot.bar(x='Country Name',
-            y=[
-                'Employment in agriculture (% of total employment) (modeled ILO estimate)',
-                'Employment in industry (% of total employment) (modeled ILO estimate)',
-                'Employment in services (% of total employment) (modeled ILO estimate)'
-                ],
+            y=y,
             stacked=True,
-            rot=0)
+            rot=0,
+            figsize=(15, 10))
+
 # <codecell>
 df.plot.bar(x='Country Name',
             y=[
@@ -76,25 +120,105 @@ df.plot.bar(x='Country Name',
                 'Urban population (% of total population)',
                 ],
             color=['r', 'b'],
-            rot=0)
+            rot=0,
+            figsize=(15, 10))
+
 # <codecell>
-df.boxplot('Mobile cellular subscriptions (per 100 people)')
+'''BOX PLOTS'''
 # <codecell>
-df.boxplot('Prevalence of HIV, total (% of population ages 15-49)')
+value = 'Mobile cellular subscriptions (per 100 people)'
+plt.figure(num=None, figsize=(10, 2))
+plt.boxplot(df[value],
+            vert=False)
+plt.title(value)
+plt.show()
+
 # <codecell>
-corr = df.iloc[:, 1:].corr()
-corr.style.background_gradient(cmap='coolwarm')
+value = 'Prevalence of HIV, total (% of population ages 15-49)'
+plt.figure(num=None, figsize=(10, 2))
+plt.boxplot(df[value],
+            vert=False)
+plt.title(value)
+plt.show()
+
 # <codecell>
-corr = df[[
-    'Employment in agriculture (% of total employment) (modeled ILO estimate)',
-    'Employment in industry (% of total employment) (modeled ILO estimate)',
-    'Employment in services (% of total employment) (modeled ILO estimate)'
-    ]].corr()
-corr.style.background_gradient(cmap='coolwarm')
+'''SCATTER PLOTS'''
 # <codecell>
-corr = df[[
-    'Agriculture, forestry, and fishing, value added (% of GDP)',
-    'Industry (including construction), value added (% of GDP)',
-    'Services, value added (% of GDP)'
-    ]].corr()
-corr.style.background_gradient(cmap='coolwarm')
+x = 'GDP per Capita'
+y = 'Life expectancy at birth, total (years)'
+plt.figure(num=None, figsize=(20, 10))
+plt.scatter(
+            df[x],
+            df[y],
+            c=df[y],
+            s=df[x],
+            cmap='viridis',
+            alpha=0.5)
+plt.xlabel(x)
+plt.ylabel(y)
+for i, txt in enumerate(df['Country Name']):
+    plt.annotate(
+                txt,
+                (df.iloc[i][x],
+                    df.iloc[i][y]))
+plt.show()
+
+# <codecell>
+x = 'GDP per Capita'
+y = 'Population ages 15-64 (% of total population)'
+plt.figure(num=None, figsize=(20, 10))
+plt.scatter(
+            df[x],
+            df[y],
+            c=df[y],
+            s=df[x],
+            cmap='viridis',
+            alpha=0.5)
+plt.xlabel(x)
+plt.ylabel(y)
+for i, txt in enumerate(df['Country Name']):
+    plt.annotate(
+                txt,
+                (df.iloc[i][x],
+                    df.iloc[i][y]))
+plt.show()
+
+# <codecell>
+x = 'GDP per Capita'
+y = 'Age dependency ratio, young (% of working-age population)'
+plt.figure(num=None, figsize=(20, 10))
+plt.scatter(
+            df[x],
+            df[y],
+            c=df[y],
+            s=df[x],
+            cmap='viridis',
+            alpha=0.5)
+plt.xlabel(x)
+plt.ylabel(y)
+for i, txt in enumerate(df['Country Name']):
+    plt.annotate(
+                txt,
+                (df.iloc[i][x],
+                    df.iloc[i][y]))
+plt.show()
+
+# <codecell>
+'''ADDITIONAL ANALYSIS (GROUPING POOR AND REACH COUNTRIES)'''
+# <codecell>
+df_rich = df.iloc[:-1].\
+    loc[df['Age dependency ratio, young (% of working-age population)'] < 65]
+df_rich = df_rich.reset_index(drop=True)
+df_rich
+
+# <codecell>
+df_rich.describe()
+
+# <codecell>
+df_poor = df.iloc[:-1].\
+    loc[df['Age dependency ratio, young (% of working-age population)'] > 65]
+df_poor = df_poor.reset_index(drop=True)
+df_poor
+
+# <codecell>
+df_poor.describe()
